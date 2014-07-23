@@ -29,7 +29,7 @@ Wikipedia's entry on object-relational mapping. The concepts largely apply to ob
 
 For this lesson's material you may either make changes to an existing project you are already working on or you may begin with the project template provided in this repository. If you'd like to use the template provided, `cd` into an empty directory that is not part of an express project or git repository and clone this repo:
 
-	$ git clone ...
+	$ git clone https://github.com/okcoders/node-mongo-class.git
 
 Then `cd` into the downloaded repository and the *template* directory contained in it. That will be the root directory for the project. Be sure to `npm install` the required depencies, which are not included in the repo.
 
