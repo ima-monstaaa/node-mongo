@@ -1,8 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var Comment = require('./../models/comments');
 
 router.get('/:pid/comments', function(req, res) {
-  res.status(404).send('all comments, post: ' + req.params.pid );
+  Comment.find({postId: req.params.pid}).exec(function(err, comments) {
+    if (err) {
+      console.log("db error in GET /posts/:pid/comments: " + err);
+      res.render('500');
+    } else {
+      res.render('comments/index', {comments:comments});
+    }
+  });
 });
 
 router.get('/:pid/comments/new', function(req, res) {
@@ -11,6 +19,17 @@ router.get('/:pid/comments/new', function(req, res) {
 
 router.post('/:pid/comments', function(req, res) {
   res.status(404).send('create comment, post: ' + req.params.pid)
+});
+
+router.get('/:pid/comments/:id', function(req, res) {
+  Comment.find({postId: req.params.pid}).exec(function(err, comments) {
+    if (err) {
+      console.log("db error in GET /posts/:pid/comments/:id " + err);
+      res.render('500');
+    } else {
+      res.render('comments/:id/index', {comments:comments});
+    }
+  });
 });
 
 router.get('/:pid/comments/:id', function(req, res) {
